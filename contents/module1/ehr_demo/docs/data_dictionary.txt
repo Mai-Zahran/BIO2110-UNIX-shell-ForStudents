@@ -1,0 +1,26 @@
+DATA DICTIONARY (DEMO)
+
+This demo is intentionally small so you can practice Unix commands.
+Treat everything in ehr_demo/raw/ as "raw exports" (do not edit in place).
+
+patients.csv
+- patient_id: string identifier (e.g., P001)
+- sex: F or M
+- birth_year: 4-digit year
+- zip3: first 3 digits of ZIP code (de-identified)
+- index_date: an example reference date for the patient
+
+visits.csv
+- encounter_id: string identifier (e.g., E1001)
+- patient_id: links to patients.csv
+- encounter_date: YYYY-MM-DD
+- visit_type: ED, OUTPT, or INPT
+- dx_code: example ICD-10 diagnosis code (demo only)
+
+vitals_small.csv
+- patient_id: links to patients.csv
+- datetime: ISO timestamp (YYYY-MM-DDTHH:MM)
+- systolic: mmHg
+- diastolic: mmHg
+- heart_rate: beats per minute
+- temp_c: body temperature in Celsius

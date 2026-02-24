@@ -1,0 +1,24 @@
+Practice workspace (Module 1)
+
+This folder is for you to create and delete files safely.
+
+Try these (examples):
+1) Create a folder:
+   mkdir sandbox
+
+2) Create an empty file:
+   touch sandbox/todo.txt
+
+3) Copy a raw file into practice:
+   cp ../ehr_demo/raw/patients.csv sandbox/patients_working.csv
+
+4) Rename a file:
+   mv sandbox/patients_working.csv sandbox/patients_for_notes.csv
+
+5) Delete ONLY in practice:
+   rm sandbox/patients_for_notes.csv
+
+Safety:
+- Before any delete, run pwd and ls -F.
+- Do not delete in ehr_demo/raw.
+

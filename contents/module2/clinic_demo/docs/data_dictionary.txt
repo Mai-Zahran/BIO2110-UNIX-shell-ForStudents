@@ -1,0 +1,110 @@
+Module 2 clinic_demo data dictionary
+This file documents the small practice datasets used in Module 2.
+
+[labs.csv]
+patient_id      : Patient identifier (e.g., P001)
+visit_date      : Visit date (YYYY-MM-DD)
+test_name       : Lab test name (Glucose, HbA1c, etc.)
+result_value    : Measured result value
+unit            : Measurement unit (mg/dL, mmol/L, etc.)
+
+[vitals.csv]
+patient_id      : Patient identifier (e.g., P001)
+visit_date      : Visit date (YYYY-MM-DD)
+heart_rate      : Heart rate (beats per minute)
+bp_systolic     : Systolic blood pressure (mmHg)
+bp_diastolic    : Diastolic blood pressure (mmHg)
+temperature_c   : Body temperature (Celsius)
+resp_rate       : Respiratory rate (breaths per minute)
+
+[meds.tsv]
+patient_id      : Patient identifier (e.g., P001)
+med_name        : Medication name
+dose            : Dose value
+unit            : Dose unit (mg, mcg, puffs)
+frequency       : Dosing frequency (QD, BID, QHS, PRN)
+
+Notes:
+- These datasets are synthetic and for teaching only.
+- Files are plain text so they can be previewed with head/tail/less.
+- CSV files use commas; TSV files use tabs.
+- In Module 2, students should save outputs in practice/.
+Reference note line 032: preview first, then filter, then save output in practice/.
+Reference note line 033: preview first, then filter, then save output in practice/.
+Reference note line 034: preview first, then filter, then save output in practice/.
+Reference note line 035: preview first, then filter, then save output in practice/.
+Reference note line 036: preview first, then filter, then save output in practice/.
+Reference note line 037: preview first, then filter, then save output in practice/.
+Reference note line 038: preview first, then filter, then save output in practice/.
+Reference note line 039: preview first, then filter, then save output in practice/.
+Reference note line 040: preview first, then filter, then save output in practice/.
+Reference note line 041: preview first, then filter, then save output in practice/.
+Reference note line 042: preview first, then filter, then save output in practice/.
+Reference note line 043: preview first, then filter, then save output in practice/.
+Reference note line 044: preview first, then filter, then save output in practice/.
+Reference note line 045: preview first, then filter, then save output in practice/.
+Reference note line 046: preview first, then filter, then save output in practice/.
+Reference note line 047: preview first, then filter, then save output in practice/.
+Reference note line 048: preview first, then filter, then save output in practice/.
+Reference note line 049: preview first, then filter, then save output in practice/.
+Reference note line 050: preview first, then filter, then save output in practice/.
+Reference note line 051: preview first, then filter, then save output in practice/.
+Reference note line 052: preview first, then filter, then save output in practice/.
+Reference note line 053: preview first, then filter, then save output in practice/.
+Reference note line 054: preview first, then filter, then save output in practice/.
+Reference note line 055: preview first, then filter, then save output in practice/.
+Reference note line 056: preview first, then filter, then save output in practice/.
+Reference note line 057: preview first, then filter, then save output in practice/.
+Reference note line 058: preview first, then filter, then save output in practice/.
+Reference note line 059: preview first, then filter, then save output in practice/.
+Reference note line 060: preview first, then filter, then save output in practice/.
+Reference note line 061: preview first, then filter, then save output in practice/.
+Reference note line 062: preview first, then filter, then save output in practice/.
+Reference note line 063: preview first, then filter, then save output in practice/.
+Reference note line 064: preview first, then filter, then save output in practice/.
+Reference note line 065: preview first, then filter, then save output in practice/.
+Reference note line 066: preview first, then filter, then save output in practice/.
+Reference note line 067: preview first, then filter, then save output in practice/.
+Reference note line 068: preview first, then filter, then save output in practice/.
+Reference note line 069: preview first, then filter, then save output in practice/.
+Reference note line 070: preview first, then filter, then save output in practice/.
+Reference note line 071: preview first, then filter, then save output in practice/.
+Reference note line 072: preview first, then filter, then save output in practice/.
+Reference note line 073: preview first, then filter, then save output in practice/.
+Reference note line 074: preview first, then filter, then save output in practice/.
+Reference note line 075: preview first, then filter, then save output in practice/.
+Reference note line 076: preview first, then filter, then save output in practice/.
+Reference note line 077: preview first, then filter, then save output in practice/.
+Reference note line 078: preview first, then filter, then save output in practice/.
+Reference note line 079: preview first, then filter, then save output in practice/.
+Reference note line 080: preview first, then filter, then save output in practice/.
+Reference note line 081: preview first, then filter, then save output in practice/.
+Reference note line 082: preview first, then filter, then save output in practice/.
+Reference note line 083: preview first, then filter, then save output in practice/.
+Reference note line 084: preview first, then filter, then save output in practice/.
+Reference note line 085: preview first, then filter, then save output in practice/.
+Reference note line 086: preview first, then filter, then save output in practice/.
+Reference note line 087: preview first, then filter, then save output in practice/.
+Reference note line 088: preview first, then filter, then save output in practice/.
+Reference note line 089: preview first, then filter, then save output in practice/.
+Reference note line 090: preview first, then filter, then save output in practice/.
+Reference note line 091: preview first, then filter, then save output in practice/.
+Reference note line 092: preview first, then filter, then save output in practice/.
+Reference note line 093: preview first, then filter, then save output in practice/.
+Reference note line 094: preview first, then filter, then save output in practice/.
+Reference note line 095: preview first, then filter, then save output in practice/.
+Reference note line 096: preview first, then filter, then save output in practice/.
+Reference note line 097: preview first, then filter, then save output in practice/.
+Reference note line 098: preview first, then filter, then save output in practice/.
+Reference note line 099: preview first, then filter, then save output in practice/.
+Reference note line 100: preview first, then filter, then save output in practice/.
+Reference note line 101: preview first, then filter, then save output in practice/.
+Reference note line 102: preview first, then filter, then save output in practice/.
+Reference note line 103: preview first, then filter, then save output in practice/.
+Reference note line 104: preview first, then filter, then save output in practice/.
+Reference note line 105: preview first, then filter, then save output in practice/.
+Reference note line 106: preview first, then filter, then save output in practice/.
+Reference note line 107: preview first, then filter, then save output in practice/.
+Reference note line 108: preview first, then filter, then save output in practice/.
+Reference note line 109: preview first, then filter, then save output in practice/.
+Reference note line 110: preview first, then filter, then save output in practice/.

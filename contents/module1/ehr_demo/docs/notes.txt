@@ -1,0 +1,23 @@
+Module 1 notes (students)
+
+Goals:
+1) Learn what folders and files are in the shell.
+2) Learn how to navigate safely using cd, pwd, ls.
+3) Learn how to preview data with head, tail, less.
+4) Learn safe file operations: mkdir, touch, cp, mv, rm (carefully).
+
+Rules that prevent confusion:
+- The shell is case-sensitive.
+- Spaces matter.
+- Relative paths depend on where you are.
+
+If anything fails:
+1) Run: pwd
+2) Run: ls -F
+3) Re-try the command slowly.
+
+AI-aware:
+- Use AI as a tutor, not an autopilot.
+- Never run a command you cannot explain.
+- Verify by running commands yourself and checking output.
+

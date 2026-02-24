@@ -1,26 +1,31 @@
-DATA DICTIONARY (DEMO)
+Data dictionary (teaching demo) — Module 1 ehr_demo
 
-This demo is intentionally small so you can practice Unix commands.
-Treat everything in ehr_demo/raw/ as "raw exports" (do not edit in place).
+Files are synthetic and designed for beginner-friendly shell practice.
 
-patients.csv
-- patient_id: string identifier (e.g., P001)
-- sex: F or M
-- birth_year: 4-digit year
-- zip3: first 3 digits of ZIP code (de-identified)
-- index_date: an example reference date for the patient
+File: patients.csv
+- patient_id : P### synthetic patient identifier
+- sex        : F or M (simplified for teaching)
+- age_group  : categorical age band (20-29, 30-39, etc.)
+- zip3       : first 3 digits of ZIP code (coarse location)
 
-visits.csv
-- encounter_id: string identifier (e.g., E1001)
-- patient_id: links to patients.csv
-- encounter_date: YYYY-MM-DD
-- visit_type: ED, OUTPT, or INPT
-- dx_code: example ICD-10 diagnosis code (demo only)
+File: visits.csv
+- visit_id   : V#### synthetic visit identifier
+- patient_id : links to patients.csv patient_id
+- visit_date : YYYY-MM-DD visit date
+- visit_type : Outpatient, ED, Inpatient
 
-vitals_small.csv
-- patient_id: links to patients.csv
-- datetime: ISO timestamp (YYYY-MM-DDTHH:MM)
-- systolic: mmHg
-- diastolic: mmHg
-- heart_rate: beats per minute
-- temp_c: body temperature in Celsius
+Suggested beginner checks:
+- Preview headers:
+  head patients.csv
+  head visits.csv
+
+- Confirm row counts:
+  wc -l patients.csv
+  wc -l visits.csv
+
+- Practice safe copying:
+  cp ehr_demo/raw/patients.csv practice/patients_copy.csv
+
+Reminder:
+- These files are for learning. Do not treat them as real clinical data.
+

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BIO2110 Module 6 Midterm Exam</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;margin:0;padding:0;background:#f4f6f8}
+#lock-screen{position:fixed;inset:0;background:#242536;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;text-align:center;padding:2rem}
+#lock-screen h1{color:#fff;font-size:22px;margin:0 0 .4rem}
+#lock-screen p{color:#e5eeec;font-size:15px;margin:0 0 1.5rem}
+#pw-input{font-size:18px;padding:.6rem 1rem;border-radius:6px;border:2px solid #119c8c;width:260px;text-align:center}
+#pw-btn{margin-left:.75rem;padding:.6rem 1.4rem;background:#119c8c;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;font-weight:600}
+#pw-btn:hover{background:#0d8075}
+#pw-error{color:#ed4545;font-size:14px;margin-top:.75rem;min-height:1.2em}
+#exam-content{display:none;max-width:900px;margin:2rem auto;padding:0 1rem 4rem}
+</style>
+</head>
+<body>
+<div id="lock-screen">
+  <div style="background:#014b3f;border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:30px">&#128274;</div>
+  <h1>BIO2110 &nbsp;|&nbsp; Module 6 Midterm Exam</h1>
+  <p>Enter the exam password given by your instructor to begin.</p>
+  <div>
+    <input type="password" id="pw-input" placeholder="Password" autofocus />
+    <button id="pw-btn" onclick="checkPw()">Enter</button>
+  </div>
+  <div id="pw-error"></div>
+</div>
+<div id="exam-content">
+
+<div style="background:#242536;border-radius:8px;padding:1.5rem 2rem;margin-bottom:2rem;color:#fff">
+  <div style="font-size:13px;color:#119c8c;font-weight:600;letter-spacing:.08em;margin-bottom:.4rem">CITY TECH &nbsp;|&nbsp; BIO2110 BIOMEDICAL INFORMATICS PROGRAMMING</div>
+  <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:.3rem">Module 6 Midterm Exam</div>
+  <div style="font-size:16px;color:#e5eeec">Shell Tools for Biomedical Data &nbsp;|&nbsp; Modules 1 through 4 &nbsp;|&nbsp; Module 5 extra credit</div>
+</div>
+
+<div style="background:#fdeaea;border-left:5px solid #ed4545;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong style="font-size:18px">Academic Integrity</strong>
+<ul style="margin:.5rem 0 0 1.25rem">
+<li>You may NOT use AI tools of any kind (ChatGPT, Copilot, Gemini, or any other).</li>
+<li>You may NOT access the internet, course notes, classmates, or any resource other than this exam page.</li>
+<li>You may NOT share commands, answers, or files with anyone during the exam period.</li>
+<li>Your Google Cloud Shell command history is cleared at the start (Part 0) and will be reviewed.</li>
+<li>Violations result in a zero on the exam and are reported to the Academic Integrity office.</li>
+</ul></div>
+
+<div style="background:#f0eef8;border-left:5px solid #242536;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Exam logistics</strong>
+<ul style="margin:.5rem 0 0 1.25rem">
+<li><strong>Duration:</strong> 3 hours. Manage your time. There are 5 graded parts plus optional extra credit.</li>
+<li><strong>Environment:</strong> Google Cloud Shell. Your workspace is at <code style="background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace">~/exam/</code>. All data files are in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace">~/exam/data/</code>. All output files must go in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace">~/exam/outputs/</code>.</li>
+<li><strong>Raw data files are read-only:</strong> never edit or redirect into files inside <code style="background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace">~/exam/data/</code>.</li>
+<li><strong>Verify every output:</strong> after every redirect, run <code style="background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace">ls -l ~/exam/outputs/</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace">head</code> to confirm the file is correct.</li>
+<li><strong>Submission:</strong> when time is called, run the submission command at the end of this page. Do not close your shell.</li>
+</ul></div>
+
+<nav style="background:#e8f4f3;border-left:5px solid #119c8c;border-radius:4px;padding:1rem 1.25rem;margin:1.5rem 0" aria-label="Exam contents">
+<strong style="font-size:16px">Contents and point distribution</strong>
+<ul style="margin:.6rem 0 0;padding:0;list-style:none;font-size:15px">
+<li style="display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid #d4ece8"><a href="#part0" style="color:#014b3f">Part 0: Setup (backup, clear history, run setup script)</a> <span style="color:#119c8c;font-weight:600;white-space:nowrap;margin-left:1rem">required, not graded</span></li>
+<li style="display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid #d4ece8"><a href="#part1" style="color:#014b3f">Part 1: Navigation and File Inspection</a> <span style="color:#119c8c;font-weight:600;margin-left:1rem">20 pts</span></li>
+<li style="display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid #d4ece8"><a href="#part2" style="color:#014b3f">Part 2: Redirection, Pipes, and Text Tools</a> <span style="color:#119c8c;font-weight:600;margin-left:1rem">20 pts</span></li>
+<li style="display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid #d4ece8"><a href="#part3" style="color:#014b3f">Part 3: grep and Regular Expressions</a> <span style="color:#119c8c;font-weight:600;margin-left:1rem">25 pts</span></li>
+<li style="display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid #d4ece8"><a href="#part4" style="color:#014b3f">Part 4: sed and awk</a> <span style="color:#119c8c;font-weight:600;margin-left:1rem">30 pts</span></li>
+<li style="display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid #d4ece8"><a href="#part5" style="color:#014b3f">Part 5: AI-Critical Thinking</a> <span style="color:#119c8c;font-weight:600;margin-left:1rem">5 pts</span></li>
+<li style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid #d4ece8;font-weight:700"><span>Total</span> <span style="color:#014b3f;font-weight:700;margin-left:1rem">100 pts</span></li>
+<li style="display:flex;justify-content:space-between;padding:.2rem 0"><a href="#part6" style="color:#014b3f">Extra Credit: Shell Scripting (Module 5)</a> <span style="color:#119c8c;font-weight:600;margin-left:1rem">+10 pts</span></li>
+</ul>
+</nav>
+
+<!-- ══════ PART 0 ══════ -->
+<h2 id="part0" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Part 0 &nbsp;· &nbsp;Setup<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">required, not graded</span></h2>
+<p style="font-size:16px;color:#555">Complete this before doing anything else. These steps are required. They are not graded, but skipping them is a violation of exam procedure.</p>
+
+<h3 id="p0s1" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Step 0.1 &nbsp;· &nbsp;Backup your coursework</h3>
+<p>Create a compressed archive of your existing course files so they are safe before the exam modifies your environment.</p>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6"># Create a timestamped backup of all course files
+cd ~
+tar -czf bio2110_backup_$(date +%Y%m%d_%H%M%S).tar.gz ~/contents 2>/dev/null
+ls -lh bio2110_backup_*.tar.gz</pre>
+<p>Confirm you see the backup file with a non-zero size. If <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">~/contents</code> does not exist, the command will produce a warning but still create the archive (it will just be empty) -- this is fine, continue.</p>
+
+<h3 id="p0s2" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Step 0.2 &nbsp;· &nbsp;Clear your shell history</h3>
+<p>This clears any commands from previous sessions. Your session history from the exam period will be reviewed.</p>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">history -c
+history -w
+> ~/.bash_history
+echo "History cleared."</pre>
+
+<h3 id="p0s3" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Step 0.3 &nbsp;· &nbsp;Run the exam setup script</h3>
+<p>Download and run the setup script to create your exam workspace and data files. Your instructor will provide the direct link or you can find it on the exam page.</p>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6"># If the script is in your home directory already:
+chmod u+x ~/exam_setup.sh
+~/exam_setup.sh</pre>
+
+<div style="background:#fdeaea;border-left:5px solid #ed4545;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Verify the setup succeeded before continuing:</strong>
+<ul style="margin:.5rem 0 0 1.25rem">
+<li>You should see a confirmation that 4 data files were created.</li>
+<li>Each file should have at least 100 lines.</li>
+<li>If any file is missing or has 0 lines, alert the instructor before starting Part 1.</li>
+</ul></div>
+
+<p>Run the evidence routine:</p>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">cd ~/exam
+pwd
+ls -F
+ls -F data
+ls -F outputs</pre>
+
+<!-- ══════ PART 1 ══════ -->
+<h2 id="part1" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Part 1 &nbsp;· &nbsp;Navigation and File Inspection<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">20 pts</span></h2>
+<p style="font-size:16px;color:#555">Suggested time: 25 minutes &nbsp;|&nbsp; 4 tasks, 5 pts each</p>
+
+<h3 id="p1t1" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 1.1 &nbsp;· &nbsp;Confirm your workspace (5 pts)</h3>
+<p>Save the following to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/workspace_info.txt</code> using one redirect (<code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">></code> ) for the first command and append (<code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">>></code> ) for the rest:</p>
+<ol style="font-size:16px">
+<li>Your current working directory.</li>
+<li>A long-format listing of <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">~/exam/</code> .</li>
+<li>A recursive listing of all files inside <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">~/exam/data/</code> .</li>
+</ol>
+<div style="background:#f0eef8;border-left:5px solid #242536;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Run each command without a redirect first</strong> to confirm the output looks right, then add the redirect.</div>
+
+<h3 id="p1t2" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 1.2 &nbsp;· &nbsp;Count lines in every data file (5 pts)</h3>
+<p>For each of the four data files, print the filename and its line count. Save the result to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/line_counts.txt</code> . Your output file must show exactly four lines -- one per file -- each with the filename and a count. Use a pipe to remove the total line that <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">wc -l</code> produces when given multiple files.</p>
+
+<h3 id="p1t3" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 1.3 &nbsp;· &nbsp;Inspect headers and identify delimiters (5 pts)</h3>
+<p>For <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> , and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">medications.csv</code> :</p>
+<ol style="font-size:16px">
+<li>Print the header line of each file.</li>
+<li>Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">cat -A</code> on the first two lines of each to identify its delimiter. What character do you see between fields in the TSV file that does not appear in the CSV files? Save this output to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/delimiter_check.txt</code> .</li>
+<li>Append a one-line <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">echo</code> statement to the same file naming the delimiter used by each file.</li>
+</ol>
+
+<h3 id="p1t4" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 1.4 &nbsp;· &nbsp;Permissions (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Run <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">ls -lh data/</code> and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/file_sizes.txt</code> .</li>
+<li>Which file is the largest? Append your answer as an <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">echo</code> line.</li>
+<li>Create <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">scripts/placeholder.sh</code> with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">touch</code> , add execute permission with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">chmod u+x</code> , then verify the change. Append the <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">ls -l scripts/</code> output to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/file_sizes.txt</code> .</li>
+</ol>
+
+<!-- ══════ PART 2 ══════ -->
+<h2 id="part2" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Part 2 &nbsp;· &nbsp;Redirection, Pipes, and Text Tools<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">20 pts</span></h2>
+<p style="font-size:16px;color:#555">Suggested time: 30 minutes &nbsp;|&nbsp; 4 tasks, 5 pts each</p>
+
+<h3 id="p2t1" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 2.1 &nbsp;· &nbsp;wc, sort, and uniq (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Count the number of words in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/word_count.txt</code> .</li>
+<li>Print all unique values in the <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">status</code> column of <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> (field 6, tab-separated), sorted alphabetically, with each value appearing exactly once. Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">cut</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">sort</code> , and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">uniq</code> . Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/unique_statuses.txt</code> .</li>
+<li>Print the patient IDs from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> sorted in reverse alphabetical order (skip the header). Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/sorted_ids.txt</code> .</li>
+</ol>
+
+<h3 id="p2t2" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 2.2 &nbsp;· &nbsp;Redirection and append (5 pts)</h3>
+<p>Create an exam work log at <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/exam_log.txt</code> using only <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">echo</code> and redirection. The file must contain:</p>
+<ol style="font-size:16px">
+<li>A first line: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">BIO2110 Midterm Exam log</code> -- use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">></code> for this line only.</li>
+<li>At least three lines appended with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">>></code> , each naming one specific output file you have already created and describing in one phrase what it contains.</li>
+<li>A final line recording the current date and time:
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">echo "Exam started: $(date)" >> outputs/exam_log.txt</pre>
+</li>
+</ol>
+
+<h3 id="p2t3" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 2.3 &nbsp;· &nbsp;Pipes and text extraction (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Using <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">head</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">tail</code> , and a pipe, print lines 3 through 7 of <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> (line 1 is the header). Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/patients_rows3to7.txt</code> .</li>
+<li>Extract only the <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">last_name</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">first_name</code> columns from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> using <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">cut</code> . Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/patient_names.txt</code> .</li>
+<li>Count how many unique drug names appear in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">medications.csv</code> (skip the header). Save the integer to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/unique_drugs.txt</code> .</li>
+</ol>
+
+<h3 id="p2t4" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 2.4 &nbsp;· &nbsp;stderr and error redirection (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Run the command below and capture <strong>only its error output</strong> to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/error_test.txt</code> . The regular listing of the real folder must still print to the screen.
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">ls ~/exam/data/ ~/exam/nonexistent_folder/</pre>
+</li>
+<li>Verify that <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/error_test.txt</code> contains the error message and that the real folder listing appeared on screen only.</li>
+<li>Append one sentence to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/error_test.txt</code> explaining what <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">2></code> does differently from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">></code> .</li>
+</ol>
+
+<!-- ══════ PART 3 ══════ -->
+<h2 id="part3" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Part 3 &nbsp;· &nbsp;grep and Regular Expressions<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">25 pts</span></h2>
+<p style="font-size:16px;color:#555">Suggested time: 45 minutes &nbsp;|&nbsp; 5 tasks, 5 pts each</p>
+
+<h3 id="p3t1" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 3.1 &nbsp;· &nbsp;Basic grep (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Search <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> for all lines containing <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Glucose</code> (case-sensitive). Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/notes_glucose.txt</code> .</li>
+<li>Search the same file for all lines containing <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">ERROR</code> . Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/notes_errors.txt</code> .</li>
+<li>Count how many lines in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> contain exactly the word <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Active</code> (not as part of <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Inactive</code> ). Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">-w</code> . Write the count with a descriptive label to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/status_counts.txt</code> . Then count <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Inactive</code> lines and append that count with a label too.</li>
+</ol>
+
+<h3 id="p3t2" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 3.2 &nbsp;· &nbsp;grep flags (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Search <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> for lines containing <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patient</code> (case-insensitive). Save with line numbers to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/grep_patient.txt</code> . Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">-i</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">-n</code> together.</li>
+<li>Search <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> for all lines that do <strong>not</strong> contain <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Final</code> . Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/not_final.txt</code> . This should include the header and any Pending rows.</li>
+<li>Count how many rows in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">medications.csv</code> have <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Metformin</code> as the drug name. Save just the integer to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/metformin_count.txt</code> .</li>
+</ol>
+
+<h3 id="p3t3" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 3.3 &nbsp;· &nbsp;Anchors and bracket expressions (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -E</code> to find all lines in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> that begin with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">P</code> followed by exactly three digits (e.g. <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">P001</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">P100</code> ). Exclude the header. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/patient_ids_regex.txt</code> .</li>
+<li>Find all lines in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> that contain a date in the format <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">[YYYY-MM-DD]</code> (square brackets included). Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -E</code> . Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/dated_notes.txt</code> .</li>
+<li>Find all lines in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> where the unit field contains either <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">mg/dL</code> or <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">%</code> . Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -E</code> with the <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">|</code> operator. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/units_match.txt</code> .</li>
+</ol>
+
+<h3 id="p3t4" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 3.4 &nbsp;· &nbsp;Quantifiers and compound patterns (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Write a <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -E</code> pattern that matches patient IDs where the numeric part is between 001 and 009 (P001 through P009, not P010 or higher). Save matching lines from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> (no header) to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/single_digit_ids.txt</code> .</li>
+<li>In <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> , find all lines that contain a sequence of two or more consecutive uppercase letters (such as ERROR). Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -E</code> with the pattern <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">[A-Z]{2,}</code> . Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/uppercase_lines.txt</code> .</li>
+<li>Pipe the output of step 1 into <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">wc -l</code> and save the integer count to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/single_digit_count.txt</code> .</li>
+</ol>
+
+<h3 id="p3t5" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 3.5 &nbsp;· &nbsp;grep in a pipeline (5 pts)</h3>
+<p>Answer this question using pipelines: <em>Which patients have both a Glucose test AND an HbA1c test in the lab results file?</em></p>
+<ol style="font-size:16px">
+<li>Find Glucose rows in <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> , extract just the patient ID (field 1), sort and deduplicate. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/glucose_patients.txt</code> .</li>
+<li>Repeat for HbA1c. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/hba1c_patients.txt</code> .</li>
+<li>Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -f</code> to find patient IDs that appear in both files:
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">grep -f outputs/hba1c_patients.txt outputs/glucose_patients.txt > outputs/both_tests.txt</pre>
+How many patients appear in both? Append the count (from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">wc -l</code> ) to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/both_tests.txt</code> .
+</li>
+</ol>
+
+<!-- ══════ PART 4 ══════ -->
+<h2 id="part4" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Part 4 &nbsp;· &nbsp;sed and awk<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">30 pts</span></h2>
+<p style="font-size:16px;color:#555">Suggested time: 55 minutes &nbsp;|&nbsp; 6 tasks, 5 pts each</p>
+
+<h3 id="p4t1" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 4.1 &nbsp;· &nbsp;sed substitution (5 pts)</h3>
+<ol style="font-size:16px">
+<li>In <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">medications.csv</code> , standardize frequency labels: replace <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">twice_daily</code> with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">BID</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">once_daily</code> with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">QD</code> (standard pharmacy abbreviations). Preview each substitution first. Then pipe both <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">sed</code> commands together and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/medications_clean.csv</code> .</li>
+<li>Verify: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -c 'twice_daily' outputs/medications_clean.csv</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -c 'once_daily' outputs/medications_clean.csv</code> must both return 0.</li>
+<li>In <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> , replace every occurrence of <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Patient</code> (capital P) with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Pt.</code> and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/notes_abbreviated.txt</code> . Then verify the original raw file still contains <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Patient</code> .</li>
+</ol>
+
+<h3 id="p4t2" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 4.2 &nbsp;· &nbsp;sed line operations (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">sed -n '1,5p'</code> to print only the first 5 lines of <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> (header + 4 data rows). Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/lab_preview.txt</code> .</li>
+<li>Remove all blank lines from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/notes_no_blanks.txt</code> . Compare line counts before and after. Append both counts as <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">echo</code> lines to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/notes_no_blanks.txt</code> .</li>
+<li>Delete all lines containing <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">ERROR</code> from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">clinical_notes.txt</code> and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/notes_no_errors.txt</code> . Verify with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">grep -c 'ERROR' outputs/notes_no_errors.txt</code> -- the count must be 0.</li>
+</ol>
+
+<h3 id="p4t3" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 4.3 &nbsp;· &nbsp;awk field inspection (5 pts)</h3>
+<p>Before writing any <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">awk</code> command, number the fields of the two structured files. Append the output of both commands to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/field_map.txt</code> . You will reference these numbers for the rest of Part 4.</p>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">head -n 1 data/lab_results.tsv | tr '\t' '\n' | cat -n
+head -n 1 data/patients.csv | tr ',' '\n' | cat -n</pre>
+<ol style="font-size:16px">
+<li>Run the field-numbering commands above and save both outputs to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/field_map.txt</code> .</li>
+<li>Verify that <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">awk</code> sees the right number of fields: run <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">awk -F '\t' '{print NF}' data/lab_results.tsv | head -n 3</code> and save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/nf_check.txt</code> . All three values should match the number of columns in the header. If any line shows 1, your delimiter is wrong.</li>
+<li>Print only <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patient_id</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">test_name</code> from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> using the correct delimiter. Include the header. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/lab_two_cols.txt</code> .</li>
+</ol>
+
+<h3 id="p4t4" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 4.4 &nbsp;· &nbsp;awk filtering (5 pts)</h3>
+<ol style="font-size:16px">
+<li>Extract all lab results where <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">result_value</code> is greater than 100. Keep the header. Use comma as the output separator. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/elevated_results.csv</code> . Verify the header is line 1.</li>
+<li>Extract all rows where the test is <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Glucose</code> and the status is <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Final</code> . Keep the header. Use tab as the output separator. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/glucose_final.tsv</code> .</li>
+<li>From <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patients.csv</code> , extract only Active female patients (sex is <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">F</code> , status is <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Active</code> ). Keep the header. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/active_female.csv</code> .</li>
+</ol>
+
+<h3 id="p4t5" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 4.5 &nbsp;· &nbsp;awk reformatting (5 pts)</h3>
+<ol style="font-size:16px">
+<li>From <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> , create a report with three columns: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">test_name</code> first, then <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">patient_id</code> , then <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">result_value</code> . Write a custom header. Skip the original header (<code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">NR>1</code> ). Use tab as the output separator. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/lab_reordered.tsv</code> .</li>
+<li>From <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">medications.csv</code> , print a summary sentence for each data row in this format: <em>patient_id takes drug_name at dose_mg mg</em>. Use <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">awk</code> with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">-F ','</code>) and string concatenation inside print. Skip the header. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/med_summary.txt</code> .</li>
+</ol>
+
+<h3 id="p4t6" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Task 4.6 &nbsp;· &nbsp;Integrated mini workflow (5 pts)</h3>
+<p><strong>Goal:</strong> produce a clean tab-separated report of all elevated Glucose results (result_value &gt; 100), with a custom header, sorted by result_value descending.</p>
+<ol style="font-size:16px">
+<li><strong>Stage 1 (awk):</strong> from <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> , filter to Glucose rows with result_value &gt; 100. Print a custom header: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">pid</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">visit</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">test</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">value</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">unit</code> . Use tab as the output separator. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/elevated_glucose_raw.tsv</code> . Preview with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">head</code> .</li>
+<li><strong>Stage 2 (sort):</strong> sort by the numeric value in column 4 descending, keeping the header on line 1. Save to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/elevated_glucose_sorted.tsv</code> . The highest value should be on line 2.</li>
+<li><strong>Stage 3 (verify):</strong>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">head -n 5 outputs/elevated_glucose_sorted.tsv
+wc -l outputs/elevated_glucose_sorted.tsv</pre>
+</li>
+</ol>
+<div style="background:#f0eef8;border-left:5px solid #242536;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Tip for Stage 2:</strong> to sort while keeping the header on top, use: <code style='background:#e5eeec;color:#014b3f;padding:.1rem .3rem;border-radius:3px;font-family:monospace'>(head -n 1 file; tail -n +2 file | sort -k4 -rn) > output</code></div>
+
+<!-- ══════ PART 5 ══════ -->
+<h2 id="part5" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Part 5 &nbsp;· &nbsp;AI-Critical Thinking<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">5 pts</span></h2>
+<p style="font-size:16px;color:#555">Suggested time: 20 minutes</p>
+
+<div style="background:#f0eef8;border-left:5px solid #242536;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Context:</strong> The exchange below shows a student asking an AI tool for help during a homework session. You are not being asked whether using AI was appropriate. You are being asked to think critically about the output the AI produced, verify it against the actual files in your workspace, and explain what you find.</div>
+
+<div style="background:#fff;border:2px solid #c8dbd8;border-radius:6px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:15px">
+  <p style="margin:0 0 .75rem;font-weight:700;color:#014b3f">Student prompt:</p>
+  <p style="margin:0 0 1.25rem;background:#f7f7f7;padding:.6rem .9rem;border-radius:4px;font-style:italic">"Write an awk command to show me all lab results where the glucose value is above 100. The file is called lab_results.tsv and has these columns: patient_id, visit_date, test_name, result_value, unit, status."</p>
+  <p style="margin:0 0 .75rem;font-weight:700;color:#014b3f">AI response:</p>
+  <p style="margin:0 0 .5rem">Sure! Here is a command that filters glucose results above 100:</p>
+  <pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">awk -F ',' 'NR==1 || ($3=="Glucose" &amp;&amp; $4+0 &gt; 100) {print}' lab_results.tsv</pre>
+  <p style="margin:.5rem 0 0;font-style:italic;color:#555">This keeps the header (NR==1) and prints rows where field 3 is Glucose and field 4 is greater than 100.</p>
+</div>
+
+<p><strong>Write your answers as <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">echo</code> statements appended to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/ai_analysis.txt</code> .</strong></p>
+<ol style="font-size:16px">
+<li><strong>(2 pts) Identify the error:</strong> Run the AI's command exactly as given on <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">data/lab_results.tsv</code> . What does the output look like? Is it correct? State precisely what is wrong and why.</li>
+<li><strong>(2 pts) Fix and verify:</strong> Write the corrected command. Append the corrected command as an echo line to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/ai_analysis.txt</code> , then save the actual output to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">outputs/ai_corrected_output.tsv</code> and verify it contains the expected rows.</li>
+<li><strong>(1 pt) Lesson:</strong> In one sentence, explain what step you would always take before trusting an AI-generated <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">awk</code> or <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">sed</code> command applied to a new file.</li>
+</ol>
+
+<!-- ══════ EXTRA CREDIT ══════ -->
+<h2 id="part6" style="font-size:22px;color:#014b3f;border-bottom:3px solid #119c8c;padding-bottom:.4rem;margin:3rem 0 1.2rem">Extra Credit &nbsp;· &nbsp;Shell Scripting (Module 5)<span style="float:right;font-size:16px;color:#119c8c;font-weight:600">+10 pts extra credit</span></h2>
+<p style="font-size:16px;color:#555">Attempt only after completing Parts 1 through 5.</p>
+
+<div style="background:#e8f4f3;border-left:5px solid #119c8c;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Rule:</strong> the script must run without errors on the exam data and produce correct output files. A script that crashes or produces empty output receives 0 extra credit, even if the logic is partially correct. Test each command in the terminal before adding it to the script.</div>
+
+<h3 id="ec1" style="font-size:19px;color:#014b3f;margin:2rem 0 .6rem;font-weight:700">Extra Credit Task (10 pts)</h3>
+<p>Write a script called <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">scripts/lab_report.sh</code> that does the following:</p>
+<ol style="font-size:16px">
+<li>Accepts two arguments: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">$1</code> is the path to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">lab_results.tsv</code> and <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">$2</code> is the output folder.</li>
+<li>Validates that both arguments were provided. If either is missing, prints a usage message and exits with code 1.</li>
+<li>Validates that the input file exists. If not, prints an error and exits with code 1.</li>
+<li>Creates the output folder with <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">mkdir -p</code> .</li>
+<li>Loops over these three test names: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Glucose</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">HbA1c</code> , <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">LipidPanel</code> . For each test:
+  <ul>
+    <li>Filters the lab results to only rows for that test (keep the header).</li>
+    <li>Saves to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">TESTNAME_results.tsv</code> inside the output folder.</li>
+    <li>Prints: <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">Saved N rows for TESTNAME</code> where N is the data row count (line count minus 1 for the header).</li>
+  </ul>
+</li>
+<li>After the loop, appends a timestamp to <code style="background:#e5eeec;color:#014b3f;padding:.1rem .35rem;border-radius:3px;font-family:monospace;font-size:15px;font-weight:600">report_log.txt</code> inside the output folder.</li>
+</ol>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">chmod u+x scripts/lab_report.sh
+./scripts/lab_report.sh data/lab_results.tsv outputs/lab_report/</pre>
+
+<!-- ══════ SUBMISSION ══════ -->
+<h2 style="font-size:22px;color:#014b3f;border-bottom:3px solid #ed4545;padding-bottom:.4rem;margin:3rem 0 1.2rem">Submission</h2>
+<div style="background:#fdeaea;border-left:5px solid #ed4545;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>When time is called, run this command immediately. Do not close your shell.</strong></div>
+<pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">cd ~
+tar -czf bio2110_midterm_$(whoami)_$(date +%Y%m%d).tar.gz exam/
+ls -lh bio2110_midterm_*.tar.gz</pre>
+<div style="background:#f0eef8;border-left:5px solid #242536;border-radius:4px;padding:1rem 1.25rem 1rem 2rem;margin:1.5rem 0;font-size:17px"><strong>Final check before submitting:</strong><pre style="background:#f0f7f6;color:#014b3f;font-weight:700;padding:.75rem 1rem;border-radius:4px;font-family:'Courier New',Courier,monospace;font-size:15px;border:1px solid #119c8c;margin:.75rem 0;line-height:1.6">ls -l ~/exam/outputs/
+wc -l ~/exam/outputs/*.txt ~/exam/outputs/*.tsv ~/exam/outputs/*.csv 2>/dev/null</pre></div>
+
+</div>
+<script>
+const HASH="266c1c35af9efe0b82c3cef78eaef370ef81ea3915efc5ccdf5e8145c5952350";
+async function sha256(m){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(m));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("");}
+async function checkPw(){const v=document.getElementById("pw-input").value;const h=await sha256(v);if(h===HASH){document.getElementById("lock-screen").style.display="none";document.getElementById("exam-content").style.display="block";}else{document.getElementById("pw-error").textContent="Incorrect password. Try again.";document.getElementById("pw-input").value="";document.getElementById("pw-input").focus();}}
+document.getElementById("pw-input").addEventListener("keydown",e=>{if(e.key==="Enter")checkPw();});
+</script>
+</body>
+</html>

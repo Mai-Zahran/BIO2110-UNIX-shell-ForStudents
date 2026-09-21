@@ -1,9 +1,0 @@
-gene	chromosome	condition	inheritance
-BRCA1	chr17	Hereditary breast and ovarian cancer	autosomal dominant
-BRCA2	chr13	Hereditary breast and ovarian cancer	autosomal dominant
-TP53	chr17	Li-Fraumeni syndrome	autosomal dominant
-LDLR	chr19	Familial hypercholesterolemia	autosomal dominant
-TCF7L2	chr10	Type 2 diabetes susceptibility	complex
-UMOD	chr16	Autosomal dominant tubulointerstitial kidney disease	autosomal dominant
-APOE	chr19	Late onset Alzheimer disease risk	complex
-EGFR	chr7	Non small cell lung cancer, somatic	somatic

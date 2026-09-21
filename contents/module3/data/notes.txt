@@ -1,0 +1,8 @@
+haemoglobin: 9.4 g/dL, below reference range
+hemoglobin: 13.2 g/dL, within reference range
+Hemoglobin: 11.8 g/dL, repeat in 8 weeks
+glucose: 168 mg/dL, fasting
+note: patient asked about haemoglobin result
+hemoglobin electrophoresis: ordered
+haematocrit: 28 %
+potassium: 5.9 mmol/L

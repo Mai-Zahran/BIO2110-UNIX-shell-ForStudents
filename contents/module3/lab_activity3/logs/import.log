@@ -1,0 +1,14 @@
+2026-03-01 08:02:11 INFO  import started source=clinical/labs.csv
+2026-03-01 08:02:12 INFO  47 rows read
+2026-03-01 08:02:13 WARN  row 18 has an empty result_value, kept as NA
+2026-03-01 08:02:14 Error parsing row 22: unexpected field count
+2026-03-01 08:02:14 INFO  row 22 skipped
+2026-03-01 08:02:15 WARN  patient_id p001 does not match the expected pattern
+2026-03-01 08:02:16 INFO  import complete, 46 rows loaded
+2026-03-02 08:00:09 INFO  import started source=clinical/visits.csv
+2026-03-02 08:00:11 Error opening clinical/visits_2026_02.csv: No such file or directory
+2026-03-02 08:00:11 INFO  continuing with the files that were found
+2026-03-02 08:00:14 INFO  import complete, 48 rows loaded
+2026-03-03 07:58:44 INFO  import started source=clinical/vitals.csv
+2026-03-03 07:58:47 WARN  measure BPSYS is not in the controlled vocabulary
+2026-03-03 07:58:49 INFO  import complete, 40 rows loaded

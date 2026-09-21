@@ -1,0 +1,12 @@
+INFO pipeline started
+ERROR file not found: data/sample_S021.fastq
+INFO alignment finished
+ERROR permission denied: reports/summary.tsv
+INFO wrote /tmp/summary.tsv
+ERROR file not found: data/sample_S033.fastq
+ERROR connection refused: seq-02
+ERROR connection refused: seq-02
+INFO failover to seq-03
+WARN low disk space on /scratch
+ERROR connection refused: seq-02
+INFO pipeline complete

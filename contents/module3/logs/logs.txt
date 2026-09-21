@@ -1,0 +1,24 @@
+2026-03-01 08:02:11 INFO pipeline started run_id=R2026-0301
+2026-03-01 08:02:12 INFO loading manifest from data/manifest.tsv
+2026-03-01 08:03:44 Warning: sample S014 missing collection time, using midnight
+Error: Error3 opening data/sample_S021.fastq: No such file or directory
+2026-03-01 08:05:02 INFO skipping S021, continuing with 47 samples
+2026-03-01 08:11:37 INFO alignment finished, mean depth 31.4x
+2026-03-01 08:12:01 Warning: PatientID 101 appears twice in manifest
+Error: Error5 writing reports/summary.tsv: Permission denied
+2026-03-01 08:19:56 INFO retrying write to /tmp/summary.tsv
+2026-03-01 08:20:03 INFO wrote /tmp/summary.tsv (47 rows)
+2026-03-02 08:00:09 INFO pipeline started run_id=R2026-0302
+2026-03-02 08:01:18 INFO parser reported an error on line 88 of data/labs.csv: unexpected field count
+Error: Error8 parsing data/labs.csv: aborting import
+2026-03-02 08:01:19 Warning: dropping malformed row for PatientID 112
+2026-03-02 08:14:26 INFO alignment finished, mean depth 28.9x
+ERR: retry scheduler restarted after crash
+2026-03-02 08:22:40 INFO pipeline complete, exit status 0
+2026-03-03 07:58:44 INFO pipeline started run_id=R2026-0303
+Error: Error4 connecting to sequencer host seq-02: connection refused
+2026-03-03 08:04:42 INFO retry 1 of 3 for seq-02
+Error: Error4 connecting to sequencer host seq-02: connection refused
+2026-03-03 08:06:30 INFO failover to seq-03 succeeded, previous error cleared
+2026-03-03 08:25:11 Warning: PatientID 101 appears twice in manifest
+2026-03-03 08:31:02 INFO pipeline complete, exit status 0

@@ -1,0 +1,12 @@
+PatientID: 101 | Age: 57 | Sex: F | Diagnosis: Type 2 Diabetes | Gene: TCF7L2 | Note: referred to endocrinology
+PatientID: 102 | Age: 61 | Sex: M | Diagnosis: Hypertension | Gene: AGT | Note: started on ACE inhibitor
+PatientID: 103 | Age: 38 | Sex: F | Diagnosis: Familial Hypercholesterolemia | Gene: LDLR | Note: lipid clinic referral
+PatientID: 104 | Age: 47 | Sex: M | Diagnosis: Type 2 Diabetes | Gene: TCF7L2 | Note: dietitian referral, repeat fasting glucose
+PatientID: 105 | Age: 29 | Sex: F | Diagnosis: Asthma | Gene: none reported | Note: inhaler technique reviewed
+PatientID: 106 | Age: 72 | Sex: M | Diagnosis: Chronic Kidney Disease | Gene: UMOD | Note: nephrology referral, avoid NSAIDs
+PatientID: 107 | Age: 45 | Sex: F | Diagnosis: Rheumatoid Arthritis | Gene: HLA-DRB1 | Note: rheumatology follow up in 3 months
+PatientID: 108 | Age: 33 | Sex: M | Diagnosis: Asthma | Gene: none reported | Note: no follow up needed
+PatientID: 109 | Age: NA | Sex: F | Diagnosis: Hypertension | Gene: AGT | Note: age missing from intake form
+PatientID: 110 | Age: 66 | Sex: M | Diagnosis: Coronary Artery Disease | Gene: PCSK9 | Note: cardiology referral
+PatientID: 111 | Age: 52 | Sex: F | Diagnosis: Osteoarthritis | Gene: none reported | Note: physiotherapy referral
+PatientID: 112 | Age: ? | Sex: M | Diagnosis: Type 2 Diabetes | Gene: TCF7L2 | Note: intake incomplete, patient rescheduled

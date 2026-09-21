@@ -1,0 +1,23 @@
+Result: P001 HbA1c 7.8 % Abnormal
+Result: P001 Glucose 168 mg/dL Abnormal
+Result: P002 BP 148/92 mmHg High
+Result: P002 Glucose 94 mg/dL Normal
+Result: P003 LDL 212 mg/dL Critical
+Result: P003 HDL 38 mg/dL Low
+Result: P004 Glucose 168 mg/dL Abnormal
+Result: P004 HbA1c 6.1 % Normal
+Result: P005 Hemoglobin 9.4 g/dL Low
+Result: P005 Glucose 88 mg/dL Normal
+Result: P006 Creatinine 168 umol/L Critical
+Result: P006 Potassium 5.9 mmol/L High
+Result: P007 Glucose 101 mg/dL Normal
+Result: P007 LDL 96 mg/dL Normal
+Result: P008 Glucose 92 mg/dL Normal
+Result: P008 HbA1c 5.2 % Normal
+Result: P012 Glucose 205 mg/dL Critical
+Result: P012 HbA1c 9.1 % Critical
+Result: P045 LDL 143 mg/dL Abnormal
+Result: P099 Glucose 79 mg/dL Normal
+Note: P003 was previously Critical, now Abnormal after treatment
+Note: P012 flagged Critical twice this month
+Summary: 4 of 20 results Critical

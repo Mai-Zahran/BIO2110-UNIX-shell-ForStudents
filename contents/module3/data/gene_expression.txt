@@ -1,0 +1,11 @@
+gene_id	sample_A	sample_B	sample_C	regulation
+BRCA1	12.4	18.9	11.2	up
+BRCA2	8.1	7.6	8.4	stable
+TP53	22.7	9.3	21.8	down
+TCF7L2	4.2	11.7	4.9	up
+LDLR	31.5	30.9	32.1	stable
+AGT	6.8	2.1	7.0	down
+UMOD	0.4	0.3	0.5	stable
+MYC	45.2	78.6	44.1	up
+EGFR	19.3	5.4	18.8	down
+APOE	27.6	28.1	27.2	stable

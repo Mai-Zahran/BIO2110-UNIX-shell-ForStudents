@@ -1,0 +1,63 @@
+PatientID: P001
+Age: 54
+Sex: F
+Diagnosis: Type 2 Diabetes
+Gene: TCF7L2
+Result: HbA1c 7.8 % Abnormal
+Note: referred to endocrinology, follow up in 3 months
+
+PatientID: P002
+Age: 61
+Sex: M
+Diagnosis: Hypertension
+Gene: AGT
+Result: BP 148/92 mmHg Abnormal
+Note: started on ACE inhibitor
+
+PatientID: P003
+Age: 38
+Sex: F
+Diagnosis: Familial Hypercholesterolemia
+Gene: LDLR
+Result: LDL 212 mg/dL Critical
+Note: lipid clinic referral, cascade screening offered
+
+PatientID: P004
+Age: 47
+Sex: M
+Diagnosis: Type 2 Diabetes
+Gene: TCF7L2
+Result: Glucose 168 mg/dL Abnormal
+Note: dietitian referral, repeat fasting glucose in 6 weeks
+
+PatientID: P005
+Age: 29
+Sex: F
+Diagnosis: Iron Deficiency Anemia
+Gene: none reported
+Result: Hemoglobin 9.4 g/dL Abnormal
+Note: oral iron started, recheck in 8 weeks
+
+PatientID: P006
+Age: 72
+Sex: M
+Diagnosis: Chronic Kidney Disease
+Gene: UMOD
+Result: Creatinine 168 umol/L Critical
+Note: nephrology referral, avoid NSAIDs
+
+PatientID: P007
+Age: 45
+Sex: F
+Diagnosis: Breast cancer, family history
+Gene: BRCA1
+Result: Pathogenic variant detected Critical
+Note: genetic counselling booked
+
+PatientID: P008
+Age: 33
+Sex: M
+Diagnosis: Routine screening
+Gene: none reported
+Result: Glucose 92 mg/dL Normal
+Note: no follow up needed

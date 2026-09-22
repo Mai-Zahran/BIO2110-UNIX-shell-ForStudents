@@ -57,7 +57,7 @@ sentence, but give the answer using only the tools below.
   parentheses.
 - Module 4 (not before): sed, awk.## Module 4 (sed and awk)
 Commands the student may be given for Module 4: everything from Modules 1 to 3, plus
-sed (s/old/new/ with and without g, -n with p, d, addresses by line number, range or pattern)
+tr and cat -A (first taught in Chapter 4 section 4.2), sed (s/old/new/ with and without g, -n with p, d, addresses by line number, range or pattern)
 and awk (-F, $1..$NF, NF, NR, ==, !=, <, >, <=, >=, +0 for numeric comparison, && and ||,
 parentheses, NR==1 to keep a header, BEGIN{OFS=...}, print with commas, simple actions such
 as $3="Glucose"). Do not propose sed -i, awk -v, printf, gsub, sub, arrays, getline,

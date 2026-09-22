@@ -1,0 +1,22 @@
+# Clinic intake notes, January 2025
+# One line per note. NA means the value was not recorded.
+
+P001 arrived 09:10, fasting confirmed, glucose drawn
+P001 weight 71 kg, height NA
+
+P002 arrived 09:40, not fasting, glucose drawn anyway
+P002 weight 88 kg, height 172 cm
+ERROR: P002 label printer jammed, sample relabeled by hand
+
+P003 arrived 10:05, fasting confirmed
+P003 weight NA, height NA
+
+P004 arrived 10:30, reports fever since yesterday
+P004 weight 95 kg, height 180 cm
+WARNING: P004 temperature above 38 C, flagged for provider
+
+# Afternoon session
+P005 arrived 13:15, fasting confirmed, glucose NA (sample hemolyzed)
+P005 weight 64 kg, height 160 cm
+
+ERROR: P005 glucose sample rejected, redraw scheduled

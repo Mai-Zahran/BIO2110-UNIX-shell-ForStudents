@@ -1,0 +1,27 @@
+Module 4 demo data dictionary (biomed_text_demo/raw)
+
+labs_dirty.csv  (comma separated, 6 fields, header row + 30 data rows)
+  1 patient_id    P001 to P010
+  2 visit_date    YYYY-MM-DD
+  3 test_name     Glu or Glucose (the same test, entered two ways), HbA1c, Creatinine, Sodium
+  4 result_value  a number, or NA when the result was not available
+  5 unit          mg/dL, %, mmol/L
+  6 status        Final or Prelim
+
+vitals.tsv  (TAB separated, 5 fields, header row + 20 data rows)
+  1 patient_id
+  2 visit_date
+  3 metric        HR, SBP, Temp, SpO2
+  4 value
+  5 unit          bpm, mmHg, C, %
+
+notes.txt  (free text, one note per line)
+  Lines starting with # are comments.
+  Blank lines separate patients.
+  NA marks a value that was not recorded.
+  Lines starting with ERROR: or WARNING: are system messages.
+
+The file is called labs_dirty.csv on purpose. The mixed spelling of the
+glucose test (Glu and Glucose) and the NA values are the "dirt" you will
+learn to handle in this module. Never edit the files in raw/. Save every
+result as a new file in practice/.

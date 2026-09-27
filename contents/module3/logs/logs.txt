@@ -1,0 +1,22 @@
+INFO: pipeline started
+INFO: loading sample sheet
+Warning: sample sheet has 2 empty rows
+Error: could not open reads_01.fastq
+INFO: retrying download
+Warning: checksum mismatch on reads_02.fastq
+INFO: alignment step 1 of 3
+Error4: reference index missing
+INFO: rebuilding index
+ERR: disk quota at 90 percent
+Warning: low memory, reducing threads
+INFO: alignment step 2 of 3
+Error5: read group tag not found in Error log
+INFO: alignment step 3 of 3
+ERR: temporary folder not writable
+an unexpected error was ignored by the wrapper
+INFO: variant calling
+Warning: 3 variants with missing quality
+Error7: output folder already exists
+INFO: writing report
+Error8: report writer returned error code 2
+INFO: pipeline finished with errors

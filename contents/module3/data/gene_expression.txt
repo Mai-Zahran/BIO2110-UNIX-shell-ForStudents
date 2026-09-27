@@ -1,0 +1,10 @@
+Gene: BRCA1
+Sample1: 12.4
+Sample2: 23.7
+Gene: TP53
+Sample1: 8.9
+Sample2: 15.2
+Gene: MYC
+Sample1: 31.0
+Sample2: 27.6
+Note: Gene: labels above are synthetic

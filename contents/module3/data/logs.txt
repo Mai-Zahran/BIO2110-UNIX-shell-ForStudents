@@ -1,0 +1,12 @@
+2026-03-01 INFO service started
+2026-03-01 ERROR connection refused
+2026-03-01 INFO retry scheduled
+2026-03-01 ERROR connection refused
+2026-03-01 WARN slow response
+2026-03-01 ERROR timeout after 30s
+2026-03-01 INFO cache cleared
+2026-03-01 ERROR connection refused
+2026-03-01 ERROR disk full
+2026-03-01 INFO backup complete
+2026-03-01 ERROR permission denied
+2026-03-01 INFO service stopped

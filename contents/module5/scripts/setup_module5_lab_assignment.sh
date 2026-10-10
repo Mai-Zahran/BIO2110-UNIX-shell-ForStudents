@@ -152,59 +152,28 @@ C09 AGATAACCAGCATAACTCTAAGTACTGCTA
 C10 GTAAGAATTCGACCTGGCGAGCTACCTGCA
 EOF_SEQ
 
-cat > "$WORK/scripts/ward_report.sh" <<'EOF_SCRIPT'
-# ward_report.sh
-# Purpose: save the ALERT lines from the Ward A log in a report.
-# Run it from the folder that contains raw/ and output/.
-
-echo "Starting Ward A report"
-
-# 1. Extract the alert lines
-grep "ALERT" raw/ward_a.log > output/ward_a_alerts.txt
-
-# 2. Verify the report
-wc -l output/ward_a_alerts.txt
-
-echo "Finished"
-EOF_SCRIPT
-
-cat > "$WORK/scripts/ward_variables.sh" <<'EOF_SCRIPT'
-# ward_variables.sh
-# Purpose: save the ALERT lines from one ward log, with the file names stored in variables.
-
-INPUT="raw/ward_a.log"
-OUTPUT="output/ward_a_alerts.txt"
-
-# 1. Extract the alert lines
-grep "ALERT" "$INPUT" > "$OUTPUT"
-
-# 2. Verify the report
-wc -l "$OUTPUT"
-EOF_SCRIPT
-
-cat > "$WORK/scripts/loop_starter.sh" <<'EOF_SCRIPT'
-# loop_starter.sh
-# Purpose: show the first 2 lines of each ward log.
+cat > "$WORK/scripts/candidate_a.sh" <<'EOF_SCRIPT'
+# candidate_a.sh
+# Purpose: collect the ALERT lines from three ward logs in one report.
 
 for file in raw/ward_a.log raw/ward_b.log raw/ward_c.log
 do
-  echo "Checking $file"
-  head -n 2 "$file"
+  grep "ALERT" "$file" > output/candidate_a_report.txt
 done
+
+wc -l output/candidate_a_report.txt
 EOF_SCRIPT
 
-cat > "$WORK/scripts/motif_report.sh" <<'EOF_SCRIPT'
-# motif_report.sh
-# Purpose: collect every sequence that contains the EcoRI site GAATTC
-# from three sequence batches in one report.
+cat > "$WORK/scripts/candidate_b.sh" <<'EOF_SCRIPT'
+# candidate_b.sh
+# Purpose: collect the ALERT lines from three ward logs in one report.
 
-for file in raw/seq_batch1.txt raw/seq_batch2.txt raw/seq_batch3.txt
+for file in raw/ward_a.log raw/ward_b.log raw/ward_c.log
 do
-  grep "GAATTC" "$file" >> output/ecori_sites.txt
+  grep "ALERT" "$file" >> output/candidate_b_report.txt
 done
 
-# Verify the report
-wc -l output/ecori_sites.txt
+wc -l output/candidate_b_report.txt
 EOF_SCRIPT
 
 if [ ! -f "$WORK/output/README.txt" ]; then

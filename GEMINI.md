@@ -70,8 +70,9 @@ sentence, but give the answer using only the tools below.
 - Module 1: pwd, ls (with -F, -l, -ltr, -R), cd, cd -, mkdir, mkdir -p, touch,
   rmdir, cp, cp -r, mv, rm, rm -r, cat, head, tail, less, Tab completion,
   absolute and relative paths, . .. and ~.
-- Module 2: wc, cut, sort, uniq, echo, redirection with > >> and 2>, pipes,
-  tail -n +2 to skip a header, chmod.
+- Module 2: wc (-l and -w), cut, sort, uniq, echo, cat -A, redirection with > >>
+  and 2>, pipes, tail -n +2 to skip a header, chmod u+x, running a script
+  with bash script.sh or ./script.sh.
 - Module 3: grep with -n -i -w -c -v -r -E -o -h, the exit status in $?, and
   regular expressions using [ ], ranges, ^ $, the dot, backslash escaping,
   ? * + {m,n}, | and parentheses.

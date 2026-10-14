@@ -1,0 +1,10 @@
+2026-03-01 08:00 INFO link up eth0
+2026-03-01 08:05 ERROR dns lookup failed
+2026-03-01 08:06 error retrying dns
+2026-03-01 08:10 Error: gateway unreachable
+2026-03-01 08:11 INFO route restored
+2026-03-01 09:00 ERROR packet loss 12 percent
+2026-03-01 09:30 WARN latency high
+2026-03-01 10:00 error: ntp drift
+2026-03-01 10:30 INFO link stable
+2026-03-01 11:00 ERROR firewall rule rejected

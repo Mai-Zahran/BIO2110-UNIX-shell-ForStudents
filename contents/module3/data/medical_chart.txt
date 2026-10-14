@@ -1,0 +1,12 @@
+PatientID: 101, Age: 57, Diagnosis: Type 2 Diabetes, Medication: Metformin
+PatientID: 102, Age: 61, Diagnosis: Hypertension, Medication: Lisinopril
+PatientID: 103, Age: 34, Diagnosis: Asthma, Medication: Albuterol
+PatientID: 104, Age: 72, Diagnosis: Type 2 Diabetes, Medication: Insulin
+PatientID: 105, Age: 29, Diagnosis: Rheumatoid Arthritis, Medication: Methotrexate
+PatientID: 106, Age: 45, Diagnosis: Asthma, Medication: Fluticasone
+PatientID: 107, Age: NA, Diagnosis: Migraine, Medication: Sumatriptan
+PatientID: 108, Age: 66, Diagnosis: Coronary Artery Disease, Medication: Atorvastatin
+PatientID: 109, Age: 52, Diagnosis: Hypertension, Medication: Amlodipine
+PatientID: 110, Age: 38, Diagnosis: Hypothyroidism, Medication: Levothyroxine
+PatientID: 111, Age: 41, Diagnosis: Anemia, Medication: Ferrous sulfate
+PatientID: 112, Age: 49, Diagnosis: Type 2 Diabetes, Medication: Glipizide

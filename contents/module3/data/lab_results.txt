@@ -1,0 +1,22 @@
+Result: Glucose 142 Abnormal
+Result: Glucose 95 Normal
+Result: HbA1c 5.4 Normal
+Result: Potassium 6.3 Critical
+Result: Sodium 138 Normal
+Note: previous Abnormal glucose was repeated
+Result: Creatinine 1.0 Normal
+Result: Hemoglobin 9.1 Low
+Result: LDL 190 High
+Result: Glucose 310 Critical
+Result: Platelets 250 Normal
+Result: Troponin 0.9 Critical
+Result: WBC 4.5 Normal
+Result: Calcium 8.0 Low
+Result: HDL 62 Normal
+Note: repeat ordered because the first run was Critical
+Result: Bilirubin 2.4 High
+Result: TSH 0.1 Low
+Result: Albumin 4.0 Normal
+Result: Glucose 128 Abnormal
+Result: Magnesium 2.0 Normal
+Result: Lactate 5.0 Critical

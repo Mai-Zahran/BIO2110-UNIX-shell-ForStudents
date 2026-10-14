@@ -1,0 +1,5 @@
+hemoglobin: 13.2 g/dL, stable
+haemoglobin: 11.0 g/dL, repeat in 2 weeks
+glucose: 142 mg/dL
+note: haemoglobin trend discussed
+hemoglobin: 9.8 g/dL, low

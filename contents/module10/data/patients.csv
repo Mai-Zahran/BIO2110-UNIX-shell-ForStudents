@@ -1,0 +1,7 @@
+patient_id,name,age,diagnosis,glucose,hba1c,cd4,viral_load
+P001,Ana Torres,55,Type 2 Diabetes,210,8.3,350,5000
+P002,James Kim,70,Hypertension,142,6.1,620,1200
+P003,Priya Patel,38,HIV,88,5.4,180,75000
+P004,Omar Hassan,61,Type 2 Diabetes,195,7.8,410,2300
+P005,Yuki Tanaka,45,HIV,130,5.9,280,48000
+P006,Maria Santos,52,Hypertension,156,6.5,580,900

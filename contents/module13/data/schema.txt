@@ -1,0 +1,21 @@
+CREATE TABLE patients (
+    patient_id TEXT PRIMARY KEY,
+    age INTEGER,
+    sex TEXT,
+    smoker INTEGER
+);
+CREATE TABLE visits (
+    visit_id INTEGER PRIMARY KEY,
+    patient_id TEXT,
+    visit_date TEXT,
+    department TEXT,
+    systolic INTEGER,
+    diastolic INTEGER
+);
+CREATE TABLE labs (
+    lab_id INTEGER PRIMARY KEY,
+    patient_id TEXT,
+    test TEXT,
+    value REAL,
+    unit TEXT
+);

@@ -1,0 +1,9 @@
+patient_id,test,value,unit
+P004,cholesterol,195.0,mg/dL
+P002,glucose,177.0,mg/dL
+P015,glucose,146.0,mg/dL
+P007,hba1c,4.7,%
+P020,cholesterol,150.0,mg/dL
+P020,glucose,78.0,mg/dL
+P002,hba1c,9.2,%
+P001,hba1c,7.4,%
